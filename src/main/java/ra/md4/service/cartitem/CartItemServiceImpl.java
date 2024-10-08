@@ -76,4 +76,17 @@ public class CartItemServiceImpl implements ICartItemService {
     public double calculateTotalPrice(List<CartItem> cartItems) {
         return iCartDao.calculateTotalPrice(cartItems);
     }
+
+    @Transactional
+    @Override
+    public void clearCart(Integer userId) {
+        List<CartItem> cartItems = iCartDao.findByUserId(userId);
+        cartItems.forEach(cartItem -> iCartDao.delete(cartItem.getId()));
+        iCartDao.clearCart(userId);
+    }
+
+    @Override
+    public List<CartItem> getCartItems(Integer userId) {
+        return iCartDao.getCartItems(userId);
+    }
 }

@@ -67,6 +67,7 @@ public class ProductController {
     // Thêm mới sản phẩm
     @PostMapping("/create")
     public String createProduct(@ModelAttribute Product product) {
+        product.setStatus(true);
         iProductService.save(product);
         return "redirect:/admin/products";
     }
@@ -76,5 +77,11 @@ public class ProductController {
         List<Product> products = iProductService.searchByName(name);
         model.addAttribute("products", products);
         return "admin/product/product";
+    }
+
+    @GetMapping("/changeStatus/{id}")
+    public String changeUserStatus(@PathVariable("id") Integer id) {
+        iProductService.changeStatus(id);
+        return "redirect:/admin/products";
     }
 }

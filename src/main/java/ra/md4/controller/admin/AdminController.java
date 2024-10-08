@@ -62,6 +62,11 @@ package ra.md4.controller.admin;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -71,7 +76,14 @@ public class AdminController {
     }
 
     @GetMapping("/logout")
-    public String logout() {
+    public String logout(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+        // Xóa cookie khi đăng xuất
+        Cookie cookie = new Cookie("userEmail", null);
+        cookie.setMaxAge(0); // Đặt thời gian sống bằng 0 để xóa
+        cookie.setPath("/"); // Đảm bảo cookie có thể xóa trên toàn bộ ứng dụng
+        response.addCookie(cookie);
+
+        session.invalidate();
         return "redirect:/";
     }
 

@@ -395,7 +395,7 @@ public class ProductDaoImpl implements IProductDao {
 
     @Override
     public List<Product> findByCategoryId(int categoryId) {
-        String jpql = "SELECT p FROM Product p JOIN FETCH p.category c WHERE c.id = :categoryId AND c.status = true";
+        String jpql = "SELECT p FROM Product p JOIN FETCH p.category c WHERE c.id = :categoryId AND c.status = true and p.status = true";
         return entityManager.createQuery(jpql, Product.class)
                 .setParameter("categoryId", categoryId)
                 .getResultList();
@@ -410,5 +410,23 @@ public class ProductDaoImpl implements IProductDao {
         );
         q.setParameter("query", searchQuery);
         return q.getResultList();
+    }
+
+    @Override
+    public void changeStatus(Integer id) {
+        SessionFactory sessionFactory = (SessionFactory) container.getObject();
+        Session session = sessionFactory.openSession();
+        Transaction tran = session.beginTransaction();
+        try{
+            Product product = session.get(Product.class,id);
+            product.setStatus(!product.isStatus());
+            session.update(product);
+            tran.commit();
+        }catch (Exception e){
+            tran.rollback();
+            e.printStackTrace();
+        }finally {
+            session.close();
+        }
     }
 }

@@ -12,4 +12,6 @@ public interface ICartItemService {
     void changeQuantity(FormChangeQuantity formChangeQuantity);
     void deleteCartItem(Integer cartItemId);
     double calculateTotalPrice(List<CartItem> cartItems);
+    void clearCart(Integer userId);
+    List<CartItem> getCartItems(Integer userId);
 }

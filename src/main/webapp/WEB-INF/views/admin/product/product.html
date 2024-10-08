@@ -145,10 +145,57 @@
         a[href="/admin/dashboard"]:hover {
             background-color: #e53935;
         }
+        .slider {
+            background-color: #ffffff2b;
+            border-radius: 100px;
+            padding: 1px;
+            margin: 10px;
+            cursor: pointer;
+            transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            align-items: center;
+            position: relative;
+            display: block;
+            width: 51px;
+            height: 29px;
+            box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset, rgba(0, 0, 0, 0.21) 0px 0px 0px 24px inset,
+            #22cc3f 0px 0px 0px 0px inset, rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;
+        }
 
+        .slider::after {
+            content: "";
+            display: flex;
+            top: 2.3px;
+            left: 2px;
+            width: 26px;
+            height: 26px;
+            background-color: #e3e3e3;
+            border-radius: 200px;
+            position: absolute;
+            box-shadow: transparent 0px 0px 0px 2px, rgba(0, 0, 0, 0.3) 0px 6px 6px;
+            transition: left 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s, background-color 300ms cubic-bezier(0.4, 0, 0.2, 1) 0s;
+            will-change: left, background-color;
+        }
+
+        .switch input[type="checkbox"]:checked + .slider {
+            box-shadow: rgba(0, 0, 0, 0.62) 0px 0px 5px inset, #22cc3f 0px 0px 0px 2px inset, #22cc3f 0px 0px 0px 24px inset,
+            rgba(224, 224, 224, 0.45) 0px 1px 0px 0px;
+        }
+
+        .switch input[type="checkbox"]:checked + .slider::after {
+            left: 24px;
+        }
+
+        .switch input[type="checkbox"] {
+            display: none;
+        }
     </style>
 </head>
 <body>
+<script>
+    function toggleStatus(id) {
+        location.href = "/admin/products/changeStatus/"+id
+    }
+</script>
 <a th:href="@{/admin/products/new}">Thêm mới</a>
 <form th:action="@{/admin/products/search}" method="get">
     <input type="text" name="name" placeholder="Tìm kiếm sản phẩm" />
@@ -162,7 +209,6 @@
             <th>ID</th>
             <th>SKU</th>
             <th>Tên sản phẩm</th>
-            <th>Mô tả</th>
             <th>Giá</th>
             <th>Giảm giá</th>
             <th>Giá sau giảm</th>
@@ -171,6 +217,8 @@
             <th>Danh mục</th>
             <th>Ngày tạo</th>
             <th>Ngày cập nhật</th>
+            <th>Trạng thái</th>
+            <th>Trạng thái</th>
             <th>Thao tác</th>
         </tr>
         </thead>
@@ -179,7 +227,6 @@
             <td th:text="${product.id}"></td>
             <td th:text="${product.sku}"></td>
             <td th:text="${product.name}"></td>
-            <td th:text="${product.description}"></td>
             <td th:text="${product.formattedUnitPrice}"></td>
             <td th:text="${product.discount}"></td>
             <td th:text="${product.formattedDiscountedPrice}"></td>
@@ -190,6 +237,15 @@
             <td th:text="${product.category.name}"></td>
             <td th:text="${#dates.format(product.createdAt, 'dd-MM-yyyy')}"></td>
             <td th:text="${#dates.format(product.updatedAt, 'dd-MM-yyyy')}"></td>
+            <td th:text="${product.status? 'Hoạt động' : 'Không hoạt động'}"></td>
+            <td>
+                <input type="hidden" name="status" value="true" />
+                <label class="switch">
+                    <input type="checkbox" name="status" th:checked="${product.status}" th:onchange="|toggleStatus(${product.id})|">
+                    <span class="slider"></span>
+                </label>
+                <!--                <a th:href="|/admin/users/changeStatus/${user.id}|">Change Status</a>-->
+            </td>
             <td>
                 <a th:href="@{/admin/products/edit(id=${product.id})}">Sửa</a>
                 <a th:href="@{/admin/products/delete(id=${product.id})}">Xóa</a>

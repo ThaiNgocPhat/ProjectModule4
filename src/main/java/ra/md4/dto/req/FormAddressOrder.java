@@ -9,4 +9,5 @@ public class FormAddressOrder {
     private String receiveName;
     private String receiveAddress;
     private String receivePhone;
+    private String node;
 }

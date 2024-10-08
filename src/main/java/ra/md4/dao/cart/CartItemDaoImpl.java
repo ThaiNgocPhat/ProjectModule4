@@ -54,4 +54,18 @@ public class CartItemDaoImpl implements ICartDaoItem {
         return cartItems.stream().mapToDouble(item -> item.getProduct().getUnitPrice() * item.getQuantity()).sum();
     }
 
+    @Override
+    public void clearCart(Integer userId) {
+        entityManager.createQuery("DELETE FROM CartItem c WHERE c.user.id = :userId")
+                .setParameter("userId", userId)
+                .executeUpdate();
+    }
+
+    @Override
+    public List<CartItem> getCartItems(Integer userId) {
+        return entityManager.createQuery(
+                        "SELECT c FROM CartItem c WHERE c.user.id = :userId", CartItem.class)
+                .setParameter("userId", userId)
+                .getResultList();
+    }
 }

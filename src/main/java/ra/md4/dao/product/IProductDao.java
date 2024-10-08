@@ -12,4 +12,5 @@ public interface IProductDao extends IGenericDao<Product, Integer> {
     Product getById(Integer id);
     List<Product> findByCategoryId(int categoryId);
     List<Product> searchProduct(String name);
+    void changeStatus(Integer id);
 }

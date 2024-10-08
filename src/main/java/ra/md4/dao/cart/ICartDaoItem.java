@@ -9,4 +9,6 @@ import java.util.List;
 public interface ICartDaoItem extends IGenericDao<CartItem, Integer> {
     List<CartItem> findByUserId(Integer userId);
     double calculateTotalPrice(List<CartItem> cartItems);
+    void clearCart(Integer userId);
+    List<CartItem> getCartItems(Integer userId);
 }

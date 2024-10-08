@@ -86,4 +86,9 @@ public class ProductServiceImpl implements IProductService{
     public List<Product> findByCategoryId (int categoryId){
         return iProductDao.findByCategoryId(categoryId);
     }
+
+    @Override
+    public void changeStatus(Integer id) {
+        iProductDao.changeStatus(id);
+    }
 }

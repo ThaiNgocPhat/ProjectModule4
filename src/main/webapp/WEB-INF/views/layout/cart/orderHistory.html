@@ -16,6 +16,7 @@
         <thead>
         <tr>
             <th>Đơn hàng ID</th>
+            <th>Mã đơn hàng</th>
             <th>Tên người nhận</th>
             <th>Địa chỉ giao hàng</th>
             <th>Số điện thoại</th>
@@ -25,8 +26,10 @@
         </tr>
         </thead>
         <tbody>
+        <tbody>
         <tr th:each="order : ${orders}">
             <td th:text="${order.id}"></td>
+            <td th:text="${order.serialNumber}"></td>
             <td th:text="${order.receiveName}"></td>
             <td th:text="${order.receiveAddress}"></td>
             <td th:text="${order.receivePhone}"></td>
@@ -34,6 +37,13 @@
             <td th:text="${order.status}"></td>
             <td th:text="${#dates.format(order.createdAt, 'dd-MM-yyyy HH:mm:ss')}"></td>
         </tr>
+        <tr th:if="${#lists.isEmpty(orders)}">
+            <td colspan="7">Không có đơn hàng nào.</td>
+        </tr>
+        </tbody>
+
+        </tbody>
+
         </tbody>
     </table>
 </div>

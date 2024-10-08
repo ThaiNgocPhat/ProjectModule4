@@ -13,5 +13,6 @@ public interface IProductService extends IService<Product, Integer> {
     List<Product> getFiveProducts(List<Product> allProduct);
     Product getById(Integer id);
     List<Product> findByCategoryId(int categoryId);
+    void changeStatus(Integer id);
 }
 
