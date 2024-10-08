@@ -1,0 +1,51 @@
+/* cart.css */
+
+/* Toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa; /* Màu nền nhẹ nhàng */
+}
+
+/* Chứa thông tin thành công */
+.success-container {
+    max-width: 600px; /* Chiều rộng tối đa của container */
+    margin: 50px auto; /* Căn giữa */
+    padding: 20px; /* Khoảng đệm cho container */
+    background-color: #ffffff; /* Màu nền trắng */
+    border-radius: 8px; /* Bo góc */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Bóng đổ nhẹ */
+    text-align: center; /* Căn giữa các phần tử trong container */
+}
+
+/* Tiêu đề */
+.success-container h1 {
+    color: #28a745; /* Màu xanh lá cây cho tiêu đề thành công */
+    font-size: 2em; /* Kích thước chữ lớn hơn */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+
+/* Thông báo */
+.success-container p {
+    font-size: 1.2em; /* Kích thước chữ vừa phải */
+    color: #333; /* Màu chữ tối */
+    margin-bottom: 20px; /* Khoảng cách dưới thông báo */
+}
+
+/* Liên kết */
+.success-container a {
+    display: inline-block; /* Hiển thị inline-block để tạo khoảng cách */
+    margin: 10px; /* Khoảng cách giữa các liên kết */
+    padding: 10px 20px; /* Khoảng đệm cho các nút */
+    background-color: #007bff; /* Màu nền cho nút */
+    color: white; /* Màu chữ trắng */
+    border-radius: 5px; /* Bo góc cho nút */
+    text-decoration: none; /* Bỏ gạch chân */
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu nền */
+}
+
+/* Hiệu ứng hover cho liên kết */
+.success-container a:hover {
+    background-color: #0056b3; /* Màu nền khi hover */
+}

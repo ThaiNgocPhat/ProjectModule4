@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Giỏ hàng của bạn</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/cart.css}" />
+    <script>
+        // Hàm định dạng tiền VND
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(amount);
+        }
+
+        // Cập nhật tất cả các giá trị trong trang với định dạng tiền tệ
+        document.addEventListener('DOMContentLoaded', function() {
+            // Định dạng cho các mục "Đơn giá" và "Tổng cộng"
+            document.querySelectorAll('.price').forEach(function(element) {
+                const price = parseFloat(element.textContent);
+                element.textContent = formatCurrency(price);
+            });
+
+            // Định dạng tổng tiền
+            const totalCartPrice = parseFloat(document.querySelector('.cart-total span').textContent);
+            document.querySelector('.cart-total span').textContent = formatCurrency(totalCartPrice);
+        });
+    </script>
+
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+<div class="cart-container">
+    <h1>Giỏ hàng của bạn</h1>
+
+    <table class="cart-table">
+        <thead>
+        <tr>
+            <th>Tên sản phẩm</th>
+            <th>Hình ảnh</th>
+            <th>Số lượng</th>
+            <th>Đơn giá</th>
+            <th>Tổng cộng</th>
+            <th>Xóa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item : ${cartItems}">
+            <td th:text="${item.product.name}">Tên sản phẩm</td>
+            <td><img th:src="${item.product.image}" alt="Product Image" style="width: 100px; height: auto;" /></td>
+            <td>
+                <form th:action="@{/cart/updateQuantity}" method="post">
+                    <input type="number" name="quantity" th:value="${item.quantity}" min="1" />
+                    <input type="hidden" name="cartItemId" th:value="${item.id}" />
+                    <button type="submit">Cập nhật</button>
+                </form>
+            </td>
+            <td class="price" th:text="${item.product.unitPrice}">Đơn giá</td>
+            <td class="price" th:text="${item.quantity * item.product.unitPrice}">Tổng cộng</td>
+            <td><a th:href="@{/cart/delete/{id}(id=${item.id})}" class="delete-link">Xóa</a></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="total-product">
+        <a th:href="@{/orders/checkout}" class="checkout-btn">Tiến hành thanh toán</a>
+        <h3 class="cart-total">Tổng tiền: <span th:text="${totalCartPrice}"></span></h3>
+    </div>
+</div>
+
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

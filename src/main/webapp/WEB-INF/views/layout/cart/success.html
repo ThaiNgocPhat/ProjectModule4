@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Đặt hàng thành công</title>
+    <link rel="stylesheet" th:href="@{/css/header.css}" />
+    <link rel="stylesheet" th:href="@{/css/footer.css}" />
+    <link rel="stylesheet" th:href="@{/css/success.css}" />
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+<div class="success-container">
+    <h1>Đặt hàng thành công!</h1>
+    <p th:text="${message}">Thông báo</p>
+    <a href="/cart" class="continue-shopping">Tiếp tục mua sắm</a>
+    <a href="/orders/history" class="view-orders">Xem đơn hàng của tôi</a>
+</div>
+
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

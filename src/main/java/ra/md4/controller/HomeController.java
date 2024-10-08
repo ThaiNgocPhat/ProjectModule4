@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping
-public class Home {
+public class HomeController {
     @Autowired
     private IProductService iProductService;
     @GetMapping

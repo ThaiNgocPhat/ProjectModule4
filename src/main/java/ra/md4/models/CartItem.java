@@ -4,38 +4,33 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ra.md4.dto.res.UserInfo;
 
 import javax.persistence.*;
-import java.math.BigDecimal;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "cart_items")
+@Table(name = "cart_item")
 public class CartItem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name = "soppingCartId", referencedColumnName = "id")
-    private ShoppingCart shoppingCart;
+    @OneToOne
+    @JoinColumn(name = "userId", referencedColumnName = "id")
+    private User user;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "productId", referencedColumnName = "id")
     private Product product;
+    private int quantity;
 
-    @ManyToOne
-    @JoinColumn(name = "orderId", referencedColumnName = "id")
-    private Order order;
-
-
-    private Integer quantity;
-
-    public BigDecimal getTotalPrice() {
-        BigDecimal unitPrice = BigDecimal.valueOf(product.getUnitPrice());
-        return unitPrice.multiply(BigDecimal.valueOf(quantity));
+    public CartItem(User user, Product product, Integer quantity) {
+        this.user = user;
+        this.product = product;
+        this.quantity = quantity;
     }
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lịch sử giao hàng</title>
+    <link rel="stylesheet" th:href="@{/css/history.css}"/>
+    <link rel="stylesheet" th:href="@{/css/header.css}"/>
+    <link rel="stylesheet" th:href="@{/css/footer.css}"/>
+</head>
+<body>
+<div th:replace="header :: header"></div>
+
+<div class="order-history-container">
+    <h1>Lịch sử giao hàng</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>Đơn hàng ID</th>
+            <th>Tên người nhận</th>
+            <th>Địa chỉ giao hàng</th>
+            <th>Số điện thoại</th>
+            <th>Tổng giá</th>
+            <th>Trạng thái</th>
+            <th>Ngày tạo</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}"></td>
+            <td th:text="${order.receiveName}"></td>
+            <td th:text="${order.receiveAddress}"></td>
+            <td th:text="${order.receivePhone}"></td>
+            <td th:text="${order.totalPrice}"></td>
+            <td th:text="${order.status}"></td>
+            <td th:text="${#dates.format(order.createdAt, 'dd-MM-yyyy HH:mm:ss')}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+<div th:replace="footer :: footer"></div>
+</body>
+</html>

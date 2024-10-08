@@ -30,13 +30,12 @@ public class User {
     private Date updatedAt;
     private boolean isDeleted = false;
     private boolean role = false;
-
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Address> addresses;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Order> orders;
-
+    public User(Integer id) {
+        this.id = id;
+    }
 
     @PrePersist
     protected void onCreate() {

@@ -12,11 +12,40 @@
 <body>
 <div th:replace="header :: header"></div>
 
+<!--<div id="product-details">-->
+<!--    <h1 class="product-name" th:text="${product.name}">Tên sản phẩm</h1>-->
+<!--    <div class="product-info-container">-->
+<!--        <div class="product-photo">-->
+<!--            <img th:src="${product.image}" alt="Product Image" />-->
+<!--        </div>-->
+<!--        <div class="product-information">-->
+<!--            <p class="discounted-price" th:text="${product.formattedDiscountedPrice}">Giá sau khi giảm</p>-->
+<!--            <p class="standard-price" th:text="${product.formattedUnitPrice}">Giá sản phẩm</p>-->
+<!--            <p class="product-description" th:text="${product.description}">Mô tả sản phẩm</p>-->
+
+<!--            <form th:action="@{/cart/add}" method="post">-->
+<!--                <div class="quantity-selection">-->
+<!--                    <label for="quantity">Số lượng:</label>-->
+<!--                    <input type="number" id="quantity" name="quantity" value="1" min="1" required />-->
+<!--                </div>-->
+
+<!--                <input type="hidden" name="productId" th:value="${product.id}" />-->
+<!--                <button class="btn-add-cart" type="submit">Thêm vào giỏ hàng</button>-->
+<!--            </form>-->
+
+
+<!--            <form th:action="@{/favorites/add}" method="post">-->
+<!--                <input type="hidden" name="productId" th:value="${product.id}" />-->
+<!--                <button class="btn-add-favorites" type="submit">Thêm vào yêu thích</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
 <div id="product-details">
     <h1 class="product-name" th:text="${product.name}">Tên sản phẩm</h1>
     <div class="product-info-container">
         <div class="product-photo">
-            <img th:src="${product.image}" alt="Product Image" />
+            <img th:src="${product.image}" alt="Product Image">
         </div>
         <div class="product-information">
             <p class="discounted-price" th:text="${product.formattedDiscountedPrice}">Giá sau khi giảm</p>
@@ -24,15 +53,9 @@
             <p class="product-description" th:text="${product.description}">Mô tả sản phẩm</p>
 
             <form th:action="@{/cart/add}" method="post">
-                <div class="quantity-selection">
-                    <label for="quantity">Số lượng:</label>
-                    <input type="number" id="quantity" name="quantity" value="1" min="1" required />
-                </div>
-
                 <input type="hidden" name="productId" th:value="${product.id}" />
                 <button class="btn-add-cart" type="submit">Thêm vào giỏ hàng</button>
             </form>
-
 
             <form th:action="@{/favorites/add}" method="post">
                 <input type="hidden" name="productId" th:value="${product.id}" />
@@ -41,7 +64,6 @@
         </div>
     </div>
 </div>
-
 <div th:replace="footer :: footer"></div>
 
 </body>
