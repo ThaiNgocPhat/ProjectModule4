@@ -23,9 +23,11 @@
             <th>Tổng giá</th>
             <th>Trạng thái</th>
             <th>Ngày tạo</th>
+            <th>Sản phẩm</th> <!-- Thêm cột sản phẩm -->
+            <th>Số lượng</th> <!-- Thêm cột số lượng -->
+            <th>Giá</th> <!-- Thêm cột giá -->
         </tr>
         </thead>
-        <tbody>
         <tbody>
         <tr th:each="order : ${orders}">
             <td th:text="${order.id}"></td>
@@ -36,15 +38,29 @@
             <td th:text="${order.totalPrice}"></td>
             <td th:text="${order.status}"></td>
             <td th:text="${#dates.format(order.createdAt, 'dd-MM-yyyy HH:mm:ss')}"></td>
+
+            <!-- Duyệt qua danh sách sản phẩm trong đơn hàng -->
+            <td>
+                <div th:each="item : ${order.orderItems}">
+                    <div th:text="${item.product.name}"></div>
+                </div>
+            </td>
+            <td>
+                <div th:each="item : ${order.orderItems}">
+                    <div th:text="${item.quantity}"></div>
+                </div>
+            </td>
+            <td>
+                <div th:each="item : ${order.orderItems}">
+                    <div th:text="${item.price}"></div>
+                </div>
+            </td>
         </tr>
         <tr th:if="${#lists.isEmpty(orders)}">
-            <td colspan="7">Không có đơn hàng nào.</td>
+            <td colspan="11">Không có đơn hàng nào.</td>
         </tr>
         </tbody>
 
-        </tbody>
-
-        </tbody>
     </table>
 </div>
 

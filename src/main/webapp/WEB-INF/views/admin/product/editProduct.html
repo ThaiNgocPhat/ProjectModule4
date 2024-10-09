@@ -95,7 +95,7 @@
 <body>
     <h1>Chỉnh sửa sản phẩm</h1>
     <form th:action="@{/admin/products/update}" th:object="${product}" method="post">
-        <input type="hidden" th:field="*{id}" /> <!-- Ẩn ID của sản phẩm -->
+        <input type="hidden" th:field="*{id}" />
 
         <label>Tên sản phẩm:</label>
         <input type="text" th:field="*{name}" required />
@@ -114,6 +114,13 @@
 
         <label>Giảm giá:</label>
         <input type="number" th:field="*{discount}" />
+
+        <label>Danh mục:</label>
+        <select name="categoryId" id="category">
+            <option th:each="category : ${categories}" th:value="${category.id}">
+                [[${category.name}]]
+            </option>
+        </select>
 
         <button type="submit">Cập nhật sản phẩm</button>
         <a href="/admin/products">Quay lại trang sản phẩm</a>

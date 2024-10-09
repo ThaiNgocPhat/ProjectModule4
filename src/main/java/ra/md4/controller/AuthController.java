@@ -2,6 +2,7 @@ package ra.md4.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,6 +17,9 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 @Controller
 public class AuthController {
@@ -63,44 +67,61 @@ public class AuthController {
 
 
     @GetMapping("/register")
-    public String register(){
+    public String register(Model model) {
+        model.addAttribute("formRegister", new FormRegister());
         return "auth/register";
     }
 
-    @PostMapping("/register")
-    public String handleRegister(@ModelAttribute FormRegister request){
+@PostMapping("/register")
+public String handleRegister(@Valid @ModelAttribute FormRegister request,
+                             BindingResult result, Model model) {
+    if (result.hasErrors()) {
+        // Nếu có lỗi, trả lại trang đăng ký với thông báo lỗi
+        model.addAttribute("org.springframework.validation.BindingResult.formRegister", result);
+        return "auth/register"; // Quay lại trang đăng ký nếu có lỗi
+    }
+    try {
         userService.register(request);
         return "redirect:/login";
+    } catch (Exception e) {
+        model.addAttribute("errorMessage", e.getMessage());
+        return "auth/register";
     }
-    @PostMapping("/login")
-    public String handleLogin(@ModelAttribute FormLogin request, HttpSession session, Model model, HttpServletResponse response) {
-        try {
-            UserInfo userInfo = userService.login(request);
+}
 
-            // Kiểm tra trạng thái hoạt động của người dùng
-            if (!userInfo.isStatus()) { // Nếu trạng thái không hoạt động
-                model.addAttribute("error", "Tài khoản của bạn không hoạt động.");
-                return "auth/login"; // Trả về trang đăng nhập với thông báo lỗi
-            }
+@PostMapping("/login")
+public String handleLogin(@ModelAttribute FormLogin request, HttpSession session, Model model, HttpServletResponse response) {
+    try {
+        UserInfo userInfo = userService.login(request);
 
-            session.setAttribute("userLogin", userInfo);
-
-            // Thêm cookie để ghi nhớ đăng nhập
-            Cookie cookie = new Cookie("userEmail", userInfo.getUsername());
-            cookie.setMaxAge(7 * 24 * 60 * 60); // Cookie sống 7 ngày
-            cookie.setPath("/"); // Có thể truy cập trên toàn bộ ứng dụng
-            response.addCookie(cookie);
-
-            if (userInfo.isRole()) {
-                return "redirect:/admin/dashboard"; // Nếu là quản trị viên
-            } else {
-                return "redirect:/"; // Nếu là người dùng bình thường
-            }
-        } catch (AuthenticationException e) {
-            model.addAttribute("error", e.getMessage());
-            return "auth/login"; // Trả về trang đăng nhập nếu có lỗi xác thực
+        // Kiểm tra trạng thái hoạt động của người dùng
+        if (!userInfo.isStatus()) {
+            model.addAttribute("error", "Tài khoản của bạn không hoạt động.");
+            return "auth/login";
         }
+
+        session.setAttribute("userLogin", userInfo);
+
+        // Thêm cookie để ghi nhớ đăng nhập
+        String encodedUsername = URLEncoder.encode(userInfo.getUsername(), StandardCharsets.UTF_8.toString());
+        Cookie cookie = new Cookie("userEmail", encodedUsername);
+        cookie.setMaxAge(7 * 24 * 60 * 60);
+        cookie.setPath("/");
+        response.addCookie(cookie);
+
+        if (userInfo.isRole()) {
+            return "redirect:/admin/dashboard";
+        } else {
+            return "redirect:/";
+        }
+    } catch (AuthenticationException e) {
+        model.addAttribute("error", e.getMessage());
+        return "auth/login"; // Trả về trang đăng nhập nếu có lỗi xác thực
+    } catch (Exception e) {
+        model.addAttribute("error", "Đã xảy ra lỗi không xác định.");
+        return "auth/login"; // Trả về trang đăng nhập nếu có lỗi không xác định
     }
+}
 
 
     @GetMapping("/logout")

@@ -220,10 +220,12 @@
             <td th:text="${#dates.format(user.updatedAt, 'dd-MM-yyyy')}"></td>
             <td>
                     <input type="hidden" name="status" value="" />
-                    <label class="switch">
-                        <input type="checkbox" name="status" th:checked="${user.status}" th:onchange="|toggleStatus(${user.id})|">
-                        <span class="slider"></span>
-                    </label>
+                    <th:block th:if="${user.role != true}">
+                        <label class="switch">
+                            <input type="checkbox" name="status" th:checked="${user.status}" th:onchange="|toggleStatus(${user.id})|">
+                            <span class="slider"></span>
+                        </label>
+                    </th:block>
 <!--                <a th:href="|/admin/users/changeStatus/${user.id}|">Change Status</a>-->
             </td>
             <td>

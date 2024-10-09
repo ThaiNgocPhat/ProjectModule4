@@ -3,11 +3,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import ra.md4.dto.req.ProductDTO;
+import ra.md4.dto.req.ProductEditDTO;
 import ra.md4.models.Category;
 import ra.md4.models.Product;
 import ra.md4.service.admin.category.ICategoryService;
 import ra.md4.service.admin.product.IProductService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -36,15 +39,28 @@ public class ProductController {
     // lấy form chỉnh sửa sản phẩm
     @GetMapping("/edit")
     public String editProduct(@RequestParam("id") Integer id, Model model) {
+        List<Category> categories = iCategoryService.getAll();
         Product product = iProductService.findById(id);
+        model.addAttribute("categories", categories);
         model.addAttribute("product", product);
         return "admin/product/editProduct";
     }
-
-    //Chỉnh sửa sản phẩm
+//
+//    //Chỉnh sửa sản phẩm
     @PostMapping("/update")
-    public String updateProduct(@ModelAttribute Product product) {
-        iProductService.save(product);
+    public String updateProduct(@Valid @ModelAttribute ProductEditDTO productEditDTO) {
+        Category category = iCategoryService.findById(productEditDTO.getCategoryId());
+        Product product = new Product();
+        product.setId(productEditDTO.getId());
+        product.setName(productEditDTO.getName());
+        product.setDescription(productEditDTO.getDescription());
+        product.setUnitPrice(productEditDTO.getUnitPrice());
+        product.setStockQuantity(productEditDTO.getStockQuantity());
+        product.setImage(productEditDTO.getImage());
+        product.setDiscount(productEditDTO.getDiscount());
+        product.setCategory(category);
+
+        iProductService.update(product);
         return "redirect:/admin/products";
     }
 
@@ -56,7 +72,7 @@ public class ProductController {
     }
 
     //lấy form thêm mới sản phẩm
-    @GetMapping("/new")
+    @GetMapping("/add")
     public String newProduct(Model model) {
         List<Category> categories = iCategoryService.getAll();
         model.addAttribute("categories", categories);
@@ -64,10 +80,12 @@ public class ProductController {
         return "admin/product/newProduct";
     }
 
+
     // Thêm mới sản phẩm
-    @PostMapping("/create")
-    public String createProduct(@ModelAttribute Product product) {
-        product.setStatus(true);
+    @PostMapping("/add")
+    public String createProduct(@ModelAttribute Product product, @RequestParam Integer categoryId) {
+        Category category = iCategoryService.findById(categoryId);
+        product.setCategory(category); // Gán danh mục cho sản phẩm
         iProductService.save(product);
         return "redirect:/admin/products";
     }

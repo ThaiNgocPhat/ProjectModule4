@@ -22,6 +22,8 @@ public class AccessoriesController {
     public String accessories(Model model){
         int id = 6;
         List<Product> products = iProductService.findByCategoryId(id);
+        //nếu không hoạt động sẽ không hiện
+
         model.addAttribute("products", products);
         return "layout/accessories/accessories";
     }

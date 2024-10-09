@@ -16,35 +16,63 @@
         <img th:src="@{/image/img-login.jpg}">
     </div>
     <h2>Đăng ký</h2>
-    <form method="post" action="/register">
+    <form th:action="@{/register}" method="post" th:object="${formRegister}">
         <div class="mb-3">
             <label for="username" class="form-label">Username</label>
-            <input type="text" class="form-control" name="username" id="username" required>
+            <input type="text" class="form-control" th:field="*{username}" id="username" required>
+            <div th:if="${#fields.hasErrors('username')}" class="text-danger">
+                <p th:each="err : ${#fields.errors('username')}" th:text="${err}"></p>
+            </div>
         </div>
+
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" name="password" id="password" required>
+            <input type="password" class="form-control" th:field="*{password}" id="password" required>
+            <div th:if="${#fields.hasErrors('password')}" class="text-danger">
+                <p th:each="err : ${#fields.errors('password')}" th:text="${err}"></p>
+            </div>
         </div>
+
         <div class="mb-3">
             <label for="confirmPass" class="form-label">Confirm Password</label>
-            <input type="password" class="form-control" name="confirmPassword" id="confirmPass" required>
+            <input type="password" class="form-control" th:field="*{confirmPassword}" id="confirmPass" required>
+            <div th:if="${#fields.hasErrors('confirmPassword')}" class="text-danger">
+                <p th:each="err : ${#fields.errors('confirmPassword')}" th:text="${err}"></p>
+            </div>
         </div>
+
         <div class="mb-3">
             <label for="email" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+            <input type="email" class="form-control" th:field="*{email}" id="email" required>
+            <div th:if="${#fields.hasErrors('email')}" class="text-danger">
+                <p th:each="err : ${#fields.errors('email')}" th:text="${err}"></p>
+            </div>
         </div>
+
         <div class="mb-3">
             <label for="fullname" class="form-label">Fullname</label>
-            <input type="text" class="form-control" id="fullname" name="fullName" required>
+            <input type="text" class="form-control" th:field="*{fullName}" id="fullname" required>
+            <div th:if="${#fields.hasErrors('fullName')}" class="text-danger">
+                <p th:each="err : ${#fields.errors('fullName')}" th:text="${err}"></p>
+            </div>
         </div>
+
         <div class="mb-3">
             <label for="phone" class="form-label">Phone</label>
-            <input type="text" class="form-control" name="phone" id="phone" required>
+            <input type="text" class="form-control" th:field="*{phone}" id="phone" required>
+            <div th:if="${#fields.hasErrors('phone')}" class="text-danger">
+                <p th:each="err : ${#fields.errors('phone')}" th:text="${err}"></p>
+            </div>
         </div>
+
         <div class="mb-3">
             <label for="address" class="form-label">Address</label>
-            <input type="text" class="form-control" id="address" name="address" required>
+            <input type="text" class="form-control" th:field="*{address}" id="address" required>
+            <div th:if="${#fields.hasErrors('address')}" class="text-danger">
+                <p th:each="err : ${#fields.errors('address')}" th:text="${err}"></p>
+            </div>
         </div>
+
         <button type="submit" class="btn btn-primary">Register</button>
     </form>
 </div>

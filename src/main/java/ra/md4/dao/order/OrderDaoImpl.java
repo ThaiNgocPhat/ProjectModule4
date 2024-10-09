@@ -7,6 +7,7 @@ import ra.md4.models.Order;
 import ra.md4.models.User;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -40,5 +41,12 @@ public class OrderDaoImpl implements IOrderDao{
             totalPrice = totalPrice.add(itemTotal);
         }
         return totalPrice; // Trả về tổng giá tiền
+    }
+    @Override
+    public List<Order> getOrdersByUserId(Integer userId) {
+        TypedQuery<Order> query = entityManager.createQuery(
+                "SELECT o FROM Order o WHERE o.id = :userId", Order.class);
+        query.setParameter("userId", userId);
+        return query.getResultList();
     }
 }

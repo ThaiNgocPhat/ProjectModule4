@@ -1,5 +1,6 @@
 package ra.md4.service.admin.product;
 
+import ra.md4.dto.req.ProductEditDTO;
 import ra.md4.models.Product;
 import ra.md4.service.IService;
 

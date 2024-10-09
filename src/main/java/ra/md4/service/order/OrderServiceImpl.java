@@ -32,4 +32,9 @@ public class OrderServiceImpl implements IOrderService {
     public BigDecimal calculateTotalPrice(List<CartItem> cartItems) {
         return iOrderDao.calculateTotalPrice(cartItems);
     }
+
+    @Override
+    public List<Order> getOrdersByUserId(Integer userId) {
+        return iOrderDao.getOrdersByUserId(userId);
+    }
 }

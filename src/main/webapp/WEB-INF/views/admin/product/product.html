@@ -196,7 +196,7 @@
         location.href = "/admin/products/changeStatus/"+id
     }
 </script>
-<a th:href="@{/admin/products/new}">Thêm mới</a>
+<a th:href="@{/admin/products/add}">Thêm mới</a>
 <form th:action="@{/admin/products/search}" method="get">
     <input type="text" name="name" placeholder="Tìm kiếm sản phẩm" />
     <button type="submit">Tìm kiếm</button>
@@ -232,24 +232,25 @@
             <td th:text="${product.formattedDiscountedPrice}"></td>
             <td th:text="${product.stockQuantity}"></td>
             <td>
-                <img th:src="@{${product.image}}" alt="Image of product" style="width: 100px; height: auto;"/>
+                <img th:src="@{${product.image}}" alt="Hình ảnh sản phẩm ${product.name}" style="width: 100px; height: auto;"/>
             </td>
             <td th:text="${product.category.name}"></td>
             <td th:text="${#dates.format(product.createdAt, 'dd-MM-yyyy')}"></td>
             <td th:text="${#dates.format(product.updatedAt, 'dd-MM-yyyy')}"></td>
             <td th:text="${product.status? 'Hoạt động' : 'Không hoạt động'}"></td>
             <td>
-                <input type="hidden" name="status" value="true" />
                 <label class="switch">
-                    <input type="checkbox" name="status" th:checked="${product.status}" th:onchange="|toggleStatus(${product.id})|">
+                    <input type="checkbox" th:checked="${product.status}" th:onchange="|toggleStatus(${product.id})|">
                     <span class="slider"></span>
                 </label>
-                <!--                <a th:href="|/admin/users/changeStatus/${user.id}|">Change Status</a>-->
             </td>
             <td>
                 <a th:href="@{/admin/products/edit(id=${product.id})}">Sửa</a>
                 <a th:href="@{/admin/products/delete(id=${product.id})}">Xóa</a>
             </td>
+        </tr>
+        <tr th:if="${#lists.isEmpty(products)}">
+            <td colspan="13">Không có sản phẩm nào để hiển thị.</td>
         </tr>
         </tbody>
 

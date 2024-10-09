@@ -5,32 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="acd8f01c-05ae-413e-be8f-afebd75ae9a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/controller/CartController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dao/cart/CartItemDaoImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dao/cart/ICartDaoItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/FormCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/FormChangeQuantity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/models/OrderStatus.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/service/cartitem/CartItemServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/service/cartitem/ICartItemService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/cart/list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/controller/Home.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/controller/ShoppingCartController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dao/order/IOrderDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dao/order/OrderDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dao/shoppingcart/IShoppingCartDao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dao/shoppingcart/ShoppingCartDaoImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/models/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/models/CartItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/ProductDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/ProductEditDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ra/md4/models/OrderItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/controller/AccessoriesController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/controller/AccessoriesController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/controller/OrderController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/controller/admin/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/controller/admin/ProductController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dao/order/IOrderDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dao/order/IOrderDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dao/order/OrderDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dao/order/OrderDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dao/product/ProductDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dao/product/ProductDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dao/user/UserDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dao/user/UserDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/FormAddressOrder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/FormAddressOrder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/FormLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/FormLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/FormRegister.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/dto/req/FormRegister.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/models/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/models/ShoppingCart.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/models/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/service/admin/order/IOrderService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/service/admin/order/OrderServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/service/shoppingcart/IShoppingCartService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/service/shoppingcart/ShoppingCartServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/details.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/details.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/shopping/view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/service/admin/product/IProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/service/admin/product/IProductService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/service/admin/product/ProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/service/admin/product/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/service/order/IOrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/service/order/IOrderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ra/md4/service/order/OrderServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ra/md4/service/order/OrderServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/product/editProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/product/editProduct.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/product/newProduct.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/product/newProduct.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/product/product.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/product/product.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/user/user.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/admin/user/user.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/auth/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/auth/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/auth/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/auth/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/cart/orderHistory.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/cart/orderHistory.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,10 +70,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
+        <option value="Enum" />
         <option value="Interface" />
         <option value="HTML File" />
-        <option value="Enum" />
+        <option value="CSS File" />
         <option value="Class" />
       </list>
     </option>
@@ -95,34 +99,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Gradle.Build MD4.executor": "Run",
-    "Gradle.Build ProjectModule4.executor": "Run",
-    "Gradle.MD4 [build].executor": "Run",
-    "Gradle.MD4 [clean].executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "Tomcat Server.Tomcat 9.0.93.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/thaingocphat/ProjectModule4",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;Gradle.Build MD4.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build ProjectModule4.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MD4 [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.MD4 [clean].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Tomcat Server.Tomcat 9.0.93.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/thaingocphat/ProjectModule4&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/layout/shopping" />
@@ -188,6 +192,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="a3b375c1-8284-43e0-ac5d-d248baca0e79" />
+        <option name="JNDI_PORT" value="1090" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -264,6 +269,11 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Gradle.MD4 [build]" />
+      <item itemvalue="Gradle.MD4 [clean]" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.93" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.MD4 [build]" />
@@ -294,6 +304,11 @@
       <workItem from="1728311722620" duration="137000" />
       <workItem from="1728312034490" duration="1302000" />
       <workItem from="1728315879162" duration="14649000" />
+      <workItem from="1728371477813" duration="32229000" />
+      <workItem from="1728444186550" duration="2392000" />
+      <workItem from="1728446590670" duration="36000" />
+      <workItem from="1728446633328" duration="3008000" />
+      <workItem from="1728455078152" duration="4899000" />
     </task>
     <servers />
   </component>

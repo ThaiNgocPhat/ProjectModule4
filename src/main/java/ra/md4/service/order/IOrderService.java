@@ -11,4 +11,6 @@ public interface IOrderService {
     void save(Order order);
     List<Order> findByUser(User user);
     BigDecimal calculateTotalPrice(List<CartItem> cartItems);
+    List<Order> getOrdersByUserId(Integer userId);
+
 }

@@ -377,7 +377,7 @@ public class ProductDaoImpl implements IProductDao {
 
     @Override
     public List<Product> getProductsBySkuPrefix(String skuPrefix) {
-        String searchQuery = "SELECT p FROM Product p WHERE p.sku LIKE :skuPrefix";
+        String searchQuery = "SELECT p FROM Product p WHERE p.sku LIKE :skuPrefix and p.status = true";
         TypedQuery<Product> typedQuery = entityManager.createQuery(searchQuery, Product.class);
         typedQuery.setParameter("skuPrefix", skuPrefix + "%");
         return typedQuery.getResultList();

@@ -61,7 +61,7 @@ public class UserDaoImpl implements IUserDao{
 
     @Override
     public User login(String username) {
-        TypedQuery<User> query = entityManager.createQuery("from User where username= :username and isDeleted = false", User.class);
+        TypedQuery<User> query = entityManager.createQuery("from User where username=:username and isDeleted = false", User.class);
         query.setParameter("username", username);
         return query.getSingleResult();
     }
@@ -94,6 +94,10 @@ public class UserDaoImpl implements IUserDao{
             user.setStatus(!user.isStatus());
             session.update(user);
             tran.commit();
+            //nếu là admin thì không thể thay đổi được
+            if (user.isRole() == true && user.getUsername() == "admin"){
+                //thì không được thay đổi
+            }
         }catch (Exception e){
             tran.rollback();
             e.printStackTrace();

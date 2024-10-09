@@ -3,6 +3,7 @@ package ra.md4.service.admin.product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import ra.md4.dao.product.IProductDao;
+import ra.md4.dto.req.ProductEditDTO;
 import ra.md4.models.Product;
 
 import javax.persistence.EntityManager;
@@ -47,7 +48,7 @@ public class ProductServiceImpl implements IProductService{
 
     @Override
     public List<Product> getProducts(int page, int size) {
-        String query = "SELECT p FROM Product p";
+        String query = "SELECT p FROM Product p order by p.createdAt desc";
         TypedQuery<Product> typedQuery = entityManager.createQuery(query, Product.class);
         typedQuery.setFirstResult(page * size);
         typedQuery.setMaxResults(size);

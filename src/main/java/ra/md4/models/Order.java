@@ -6,6 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -29,6 +30,8 @@ public class Order {
     private String receivePhone;
     private Date createdAt;
     private Date receivedAt;
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderItem> orderItems;
 
     @PrePersist
     protected void onCreate() {

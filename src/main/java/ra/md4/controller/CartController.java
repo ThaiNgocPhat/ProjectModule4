@@ -23,11 +23,8 @@ public class CartController {
 
 @GetMapping
 public String viewCart(HttpSession session, Model model) {
-    // Lấy thông tin người dùng từ session
     UserInfo userInfo = (UserInfo) session.getAttribute("userLogin");
-
     if (userInfo == null) {
-        // Nếu người dùng chưa đăng nhập, điều hướng về trang đăng nhập hoặc xử lý khác
         return "redirect:/login";
     }
 
